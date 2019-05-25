@@ -1,0 +1,83 @@
+:lang: ja
+:doctype: book
+:toc: left
+:toclevels: 3
+:toc-title: 目次
+:sectnums:
+:sectnumlevels: 4
+:sectlinks:
+:imagesdir: ./_images
+:icons: font
+:source-highlighter: coderay
+:example-caption: 例
+:table-caption: 表
+:figure-caption: 図
+:docname: = asciidocインストールマニュアル
+:author: akenic
+:revnumber: 0.1
+:revdate: 2019/05/25
+
+// タイトル
+= Asciidoctorインストールマニュアル
+
+== Asciidoctorとは
+
+AsciidocはMarkdownなどのような軽量マークアップ言語の一つで、 +
+Webページなどをプレーンテキストで記述することができる(拡張子は.adoc)
+
+*出力形式*
+
+. HTML
+. PDF
+
+== Macにインストールする
+
+事前準備::
+rubyのインストール +
+デフォルトでインストールされているrubyを利用する場合、インストール作業中にPermissionエラーが発生する可能性があるため、新たにrubyをインストールする必要がある場合があります。
+
+インストール手順::
+
+. Asciidoctor関連インストール
+
+ > gem install asciidoctor             # asciidoctorのインストール
+ > gem install --pre asciidoctor-pdf   # asciidoctor-pdfのインストール
+ > gem install coderay                 # コードのシンタックスハイライト用
+ > gem install asciidoctor-pdf-cjk     # PDF変換のレイアウト崩れ対応
+ > gem install asciidoctor-diagram     # PlantUMLなどの図を使用
+
+. PlantUMLのインストール
+
+ > brew install graphviz
+ > brew install plantuml
+
+. mermaid.jsのインストール
+
+ > npm install -g phantomjs
+ > npm install -g mermaid
+ > npm install -g mermaid.cli
+
+TIP: PlantUMLのインストールにはJavaのインストールが必要になります。
+
+TIP: mermaid.jsをインストールするためには、node.jsをインストールする必要があります。
+
+== 出力方法
+
+=== HTML
+
+....
+> asciidoctor -r asciidoctor-pdf-cjk -r asciidoctor-diagram ファイル名.adoc
+....
+
+=== PDF
+
+....
+> asciidoctor-pdf -r asciidoctor-pdf-cjk -r asciidoctor-diagram ファイル名.adoc
+....
+
+
+== 参考
+
+http://asciidoctor.org[Asciidoctor]
+
+https://github.com/asciidoctor[Asciidoctor @ *GitHub*]
